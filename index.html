@@ -1,24 +1,145 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenexarion</title>
-    <style>
-        body { font-family: sans-serif; background-color: #f4f4f4; padding: 20px; text-align: center; }
-        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
-        h1 { color: #2c3e50; }
-        button { background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; }
-        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Zenexarion Pro</title>
+<style>
+* { box-sizing: border-box; }
+body { margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#0d001a; color:#fff; text-align:center; overflow-x:hidden; }
+.screen { display:none; padding:20px; min-height:100vh; }
+.screen.active { display:block; }
+h1 { color:gold; text-shadow:2px 2px 4px #000; margin-bottom: 10px; }
+button { padding:15px 20px; margin:10px auto; border:none; border-radius:25px; background:gold; font-weight:bold; cursor:pointer; width:85%; max-width:320px; font-size:16px; transition:0.3s; display:block; }
+button:active { transform:scale(0.95); }
+.logo { font-size: 60px; margin: 20px 0 5px; }
+.tagline { color: #ccc; font-size: 14px; margin-bottom: 30px; }
+#sheep { font-size:60px; animation:jump 1s infinite; margin:20px 0; }
+@keyframes jump { 0%{transform:translateY(0);} 50%{transform:translateY(-20px);} 100%{transform:translateY(0);} }
+textarea { width:85%; padding:12px; border-radius:15px; margin-bottom:10px; background:#1a1a2e; color:white; border:1px solid gold; font-size:16px; display:block; margin:10px auto; }
+.foto-area { width:85%; max-width:320px; margin:15px auto; border-radius:20px; border:2px dashed gold; background:#1a1a2e; overflow:hidden; min-height:180px; display:flex; align-items:center; justify-content:center; flex-direction:column; cursor:pointer; }
+.foto-area img { width:100%; border-radius:18px; display:block; }
+.foto-placeholder { color:#aaa; font-size:14px; padding:20px; }
+.foto-placeholder span { font-size:40px; display:block; margin-bottom:8px; }
+input[type="file"] { display:none; }
+.video-container { width:85%; max-width:320px; margin:15px auto; border-radius:20px; border:2px dashed gold; background:#1a1a2e; overflow:hidden; min-height:200px; display:flex; align-items:center; justify-content:center; }
+.video-container video { width:100%; border-radius:18px; }
+#statusVideo { color:#aaa; font-size:14px; padding:20px; }
+.loading { display:none; flex-direction:column; align-items:center; justify-content:center; padding:20px; }
+.loading.show { display:flex; }
+.spinner { width:50px; height:50px; border:5px solid #333; border-top:5px solid gold; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:15px; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.sound-box { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:20px; }
+.btn-sound { width:42%; background:#4b0082; color:white; border:1px solid gold; font-size:14px; }
+.btn-sound.playing { background:#7b00d4; box-shadow:0 0 10px gold; }
+.price-tag { background:#1e293b; padding:20px; border-radius:20px; border:2px solid gold; margin:20px auto; width:85%; box-shadow:0 0 15px gold; }
+.share-box { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:15px auto; width:85%; }
+.btn-share { width:42%; font-size:13px; padding:12px 8px; border-radius:20px; border:none; color:white; font-weight:bold; cursor:pointer; transition:0.3s; display:flex; align-items:center; justify-content:center; gap:6px; }
+.btn-whatsapp { background:#25D366; }
+.btn-instagram { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+.btn-facebook { background:#1877F2; }
+.btn-tiktok { background:#000; border:1px solid #fff; }
+.btn-kwai { background:#FF6B00; }
+.btn-voltar { background:silver !important; color:black !important; margin-top:20px; }
+.progress-bar { width:85%; max-width:320px; margin:10px auto; background:#333; border-radius:10px; height:10px; display:none; }
+.progress-bar.show { display:block; }
+.progress-fill { height:100%; background:gold; border-radius:10px; width:0%; transition:width 0.5s; }
+.alerta { background:#1e293b; border:1px solid gold; border-radius:15px; padding:15px; margin:10px auto; width:85%; font-size:13px; color:#ccc; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Zenexarion 🚀</h1>
-        <input type="text" placeholder="Nome do Produto">
-        <input type="number" placeholder="Valor R$">
-        <button onclick="alert('Venda registrada!')">Registrar Venda</button>
-    </div>
+<div id="home" class="screen active">
+<div class="logo">🌙</div>
+<h1>Zenexarion Pro</h1>
+<p class="tagline">Seu sono, nossa missão.</p>
+<button onclick="trocar('sonhos')">🎬 Cinema dos Sonhos</button>
+<button onclick="trocar('insonia')">🐑 Modo Dormir</button>
+<button onclick="trocar('sons')">🌧️ Sons da Natureza</button>
+<button onclick="trocar('pagamento')" style="background:#22c55e">💎 Planos & Assinatura</button>
+</div>
+<div id="sonhos" class="screen">
+<h1>🎬 Cinema dos Sonhos</h1>
+<p style="color:#ccc; font-size:14px;">Adicione sua foto e descreva seu sonho!</p>
+<div class="foto-area" onclick="document.getElementById('inputFoto').click()">
+<div class="foto-placeholder" id="fotoPlaceholder"><span>📸</span>Toque para escolher sua foto</div>
+<img id="previewFoto" src="" alt="" style="display:none;">
+</div>
+<input type="file" id="inputFoto" accept="image/*" onchange="carregarFoto(event)">
+<textarea id="descricaoSonho" rows="4" placeholder="Descreva seu sonho... Ex: Estava voando sobre nuvens douradas..."></textarea>
+<button onclick="gerarVideo()" id="btnGerar">✨ Gerar Vídeo com IA</button>
+<div class="loading" id="loadingVideo"><div class="spinner"></div><p style="color:gold;">Criando seu sonho com IA...</p><p style="color:#aaa; font-size:13px;">Aguarde até 1 minuto ⏳</p></div>
+<div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="video-container" id="areaVideo"><p id="statusVideo">O vídeo aparecerá aqui 🎬</p></div>
+<div id="areaCompartilhar" style="display:none;">
+<p style="color:gold; font-weight:bold; margin-top:20px;">📤 Compartilhar:</p>
+<div class="share-box">
+<button class="btn-share btn-whatsapp" onclick="compartilhar('whatsapp')">💬 WhatsApp</button>
+<button class="btn-share btn-instagram" onclick="compartilhar('instagram')">📸 Instagram</button>
+<button class="btn-share btn-facebook" onclick="compartilhar('facebook')">👥 Facebook</button>
+<button class="btn-share btn-tiktok" onclick="compartilhar('tiktok')">🎵 TikTok</button>
+<button class="btn-share btn-kwai" onclick="compartilhar('kwai')" style="width:85%;">🎬 Kwai</button>
+</div>
+<div class="alerta">💡 A foto foi usada apenas para criar seu vídeo. Você decide se quer compartilhar!</div>
+</div>
+<button class="btn-voltar" onclick="trocar('home')">⬅️ Voltar</button>
+</div>
+<div id="insonia" class="screen">
+<h1>🐑 Contador de Carneiros</h1>
+<div id="sheep">🐑</div>
+<h1 id="num">0</h1>
+<p id="texto" style="color:#ccc;">Prepare-se para relaxar...</p>
+<button onclick="iniciarContagem()">▶️ Iniciar Voz (1 a 100)</button>
+<button onclick="pararContagem()" style="background:#ef4444; color:white;">⏹️ Parar</button>
+<button class="btn-voltar" onclick="trocar('home')">⬅️ Voltar</button>
+</div>
+<div id="sons" class="screen">
+<h1>🌧️ Sons Relaxantes</h1>
+<p style="color:#ccc; font-size:14px;">Toque para ligar/desligar</p>
+<div class="sound-box">
+<button class="btn-sound" id="btn-chuva" onclick="playSom('chuva', this)">🌧️ Chuva</button>
+<button class="btn-sound" id="btn-grilo" onclick="playSom('grilo', this)">🦗 Grilos</button>
+<button class="btn-sound" id="btn-sapo" onclick="playSom('sapo', this)">🐸 Sapos</button>
+<button class="btn-sound" id="btn-floresta" onclick="playSom('floresta', this)">🌲 Floresta</button>
+<button class="btn-sound" id="btn-oceano" onclick="playSom('oceano', this)">🌊 Oceano</button>
+<button class="btn-sound" id="btn-vento" onclick="playSom('vento', this)">💨 Vento</button>
+</div>
+<button onclick="pararTodosSons()" style="background:#ef4444; color:white; margin-top:20px;">⏹️ Parar Tudo</button>
+<button class="btn-voltar" onclick="trocar('home')">⬅️ Voltar</button>
+</div>
+<div id="pagamento" class="screen">
+<h1>💎 Zenexarion Pro</h1>
+<div class="price-tag">
+<p style="font-size:20px;">🆓 <strong>Teste Grátis:</strong> 24 Horas</p>
+<hr style="border-color:#333;">
+<p style="font-size:18px;">📅 <strong>Mensal:</strong> R$ 19,99</p>
+<p style="font-size:16px;">📆 <strong>Anual:</strong> R$ 9,99/mês</p>
+<p style="font-size:12px; color:#aaa;">✅ Sons ilimitados • ✅ Vídeos ilimitados • ✅ Sem anúncios</p>
+</div>
+<button style="background:#00bfa5; color:white;" onclick="pagar('Pix')">💚 Pagar com PIX</button>
+<button style="background:#3b82f6; color:white;" onclick="pagar('Cartão')">💳 Cartão de Crédito</button>
+<button style="background:#f59e0b;" onclick="pagar('Boleto')">🧾 Boleto Bancário</button>
+<button class="btn-voltar" onclick="trocar('home')">⬅️ Voltar</button>
+</div>
+<script>
+const FAL_KEY = "012d0135-c226-413a-988d-338fb6c63d70:6da29c5fc86816e9779b52499d9c60a5";
+function trocar(tela) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(tela).classList.add('active'); window.scrollTo(0, 0); }
+let fotoBase64 = null;
+function carregarFoto(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { fotoBase64 = e.target.result; document.getElementById('previewFoto').src = fotoBase64; document.getElementById('previewFoto').style.display = 'block'; document.getElementById('fotoPlaceholder').style.display = 'none'; }; reader.readAsDataURL(file); }
+let videoGeradoUrl = null;
+async function gerarVideo() { const sonho = document.getElementById("descricaoSonho").value.trim(); if (!fotoBase64) { alert("⚠️ Escolha uma foto primeiro!"); return; } if (sonho === "") { alert("⚠️ Descreva seu sonho!"); return; } document.getElementById('btnGerar').style.display = 'none'; document.getElementById('loadingVideo').classList.add('show'); document.getElementById('progressBar').classList.add('show'); document.getElementById('areaCompartilhar').style.display = 'none'; document.getElementById('areaVideo').innerHTML = '<p id="statusVideo">Processando... ⏳</p>'; let progresso = 0; const progressInterval = setInterval(() => { if (progresso < 90) { progresso += Math.random() * 8; document.getElementById('progressFill').style.width = progresso + '%'; } }, 1500); try { const response = await fetch("https://fal.run/fal-ai/fast-animatediff/image-to-video", { method: "POST", headers: { "Authorization": "Key " + FAL_KEY, "Content-Type": "application/json" }, body: JSON.stringify({ image_url: fotoBase64, prompt: sonho + ", dreamy, magical, cinematic, smooth motion", negative_prompt: "low quality, blurry", num_frames: 16, fps: 8 }) }); const data = await response.json(); clearInterval(progressInterval); document.getElementById('progressFill').style.width = '100%'; if (data.video && data.video.url) { mostrarVideo(data.video.url); } else { throw new Error("erro"); } } catch(e) { clearInterval(progressInterval); document.getElementById('areaVideo').innerHTML = '<p style="color:#ef4444; padding:20px;">❌ Erro ao gerar. Tente novamente.</p>'; } document.getElementById('loadingVideo').classList.remove('show'); document.getElementById('progressBar').classList.remove('show'); document.getElementById('btnGerar').style.display = 'block'; }
+function mostrarVideo(url) { document.getElementById('areaVideo').innerHTML = '<video controls autoplay loop style="width:100%; border-radius:18px;"><source src="' + url + '" type="video/mp4"></video>'; document.getElementById('areaCompartilhar').style.display = 'block'; videoGeradoUrl = url; }
+function compartilhar(rede) { if (!videoGeradoUrl) { alert("⚠️ Gere o vídeo primeiro!"); return; } const msg = encodeURIComponent("🌙 Veja o vídeo do meu sonho! Zenexarion Pro ✨"); const url = encodeURIComponent(videoGeradoUrl); const links = { whatsapp: "https://api.whatsapp.com/send?text=" + msg + "%20" + url, facebook: "https://www.facebook.com/sharer/sharer.php?u=" + url, tiktok: "https://www.tiktok.com/", kwai: "https://www.kwai.com/", instagram: "https://www.instagram.com/" }; if (navigator.share) { navigator.share({ title: 'Zenexarion Pro', text: '🌙 Veja meu sonho!', url: videoGeradoUrl }); } else { window.open(links[rede], '_blank'); } }
+let count = 0; let timer = null;
+function falar(t) { if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); let msg = new SpeechSynthesisUtterance(t); msg.lang = 'pt-BR'; msg.rate = 0.7; window.speechSynthesis.speak(msg); } }
+function iniciarContagem() { if (timer) return; count = 0; timer = setInterval(() => { if (count >= 100) { pararContagem(); return; } count++; document.getElementById("num").innerText = count; let texto = count + " carneirinho" + (count > 1 ? "s" : ""); document.getElementById("texto").innerText = texto; falar(texto); }, 4500); }
+function pararContagem() { clearInterval(timer); timer = null; if ('speechSynthesis' in window) window.speechSynthesis.cancel(); }
+let audios = {};
+function playSom(tipo, btn) { if (audios[tipo]) { if (audios[tipo].paused) { audios[tipo].play(); btn.classList.add('playing'); } else { audios[tipo].pause(); btn.classList.remove('playing'); } } else { audios[tipo] = new Audio(tipo + '.mp3'); audios[tipo].loop = true; audios[tipo].play(); btn.classList.add('playing'); } }
+function pararTodosSons() { for (let key in audios) { audios[key].pause(); } document.querySelectorAll('.btn-sound').forEach(b => b.classList.remove('playing')); }
+function pagar(metodo) { alert("Redirecionando para pagamento via " + metodo + "...\n\nValor: R$ 19,99\n(Configure seu link do Mercado Pago)"); }
+</script>
 </body>
 </html>
+
 
