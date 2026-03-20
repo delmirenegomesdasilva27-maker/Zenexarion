@@ -80,6 +80,7 @@ input[type="file"] { display:none; }
   <button onclick="goTo('insonia')">🐑 Sleep Mode</button>
   <button onclick="goTo('sons')">🌧️ Nature Sounds</button>
   <button onclick="goTo('pagamento')" style="background:#22c55e">💎 Plans &amp; Subscription</button>
+  <button onclick="shareApp()" style="background:linear-gradient(135deg,#1e3a5f,#0ea5e9);color:white;border:1px solid #38bdf8;">🔗 Share this App</button>
 </div>
 
 <!-- DREAM CINEMA -->
@@ -225,6 +226,7 @@ function createForest(){const ctx=getCtx();const gn=ctx.createGain();gn.gain.val
 const SC={rain:createRain,ocean:createOcean,wind:createWind,cricket:createCrickets,frog:createFrogs,forest:createForest};
 function toggleSound(t,b){if(activeSounds[t]){try{activeSounds[t].source.stop();}catch(e){}try{activeSounds[t].gain.disconnect();}catch(e){}delete activeSounds[t];b.classList.remove('playing');}else{activeSounds[t]=SC[t]();b.classList.add('playing');}}
 function stopAllSounds(){for(const t in activeSounds){try{activeSounds[t].source.stop();}catch(e){}try{activeSounds[t].gain.disconnect();}catch(e){}delete activeSounds[t];}document.querySelectorAll('.btn-sound').forEach(b=>b.classList.remove('playing'));}
+function shareApp(){const appUrl="https://delmirenegomesdasilva27-maker.github.io/Zenexarion/";const msg="🌙 Check out Zenexarion Pro — the dream app! Come live your dreams again! ✨";if(navigator.share){navigator.share({title:"Zenexarion Pro",text:msg,url:appUrl});}else{window.open("https://api.whatsapp.com/send?text="+encodeURIComponent(msg+" "+appUrl),"_blank");}}
 function pay(m){alert('Redirecting to payment via '+m+'...\n\nAmount: R$ 20.00\n(Configure your payment link here)');}
 </script>
 </body>
